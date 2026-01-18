@@ -1,0 +1,59 @@
+<div
+  class="relative min-h-screen bg-gradient-to-br from-rose-50 via-orange-50 to-yellow-50 py-16"
+>
+  <!-- Decorative -->
+  <div
+    class="absolute -top-20 left-10 w-72 h-72 bg-red-400 rounded-full blur-3xl opacity-20"
+  ></div>
+
+  <div class="relative max-w-3xl mx-auto px-6">
+    <div
+      class="bg-white/80 backdrop-blur-xl border border-white/60 rounded-3xl shadow-2xl p-8 md:p-12 animate-fade-in"
+    >
+      <!-- Header -->
+      <h1 class="text-3xl font-extrabold mb-2">
+        🕒 Note History
+      </h1>
+      <p class="text-gray-600 mb-10">
+        This page is visible only to the note creator.
+      </p>
+
+      <!-- Timeline -->
+      <div class="space-y-6 mb-12">
+        <div
+          *ngFor="let item of history"
+          class="flex items-start gap-4"
+        >
+          <div
+            class="w-3 h-3 mt-2 rounded-full bg-[var(--primary)]"
+          ></div>
+
+          <div>
+            <p class="font-medium">
+              {{ item.action }}
+            </p>
+            <p class="text-sm text-gray-500">
+              {{ item.date | date:'medium' }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Danger Zone -->
+      <div
+        class="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
+      >
+        <p class="text-sm text-gray-500">
+          ⚠ This action is irreversible.
+        </p>
+
+        <button
+          (click)="deleteForever()"
+          class="px-6 py-3 rounded-xl bg-red-600 text-white font-semibold shadow hover:bg-red-700 transition"
+        >
+          Delete Note Forever
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

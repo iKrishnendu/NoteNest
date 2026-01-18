@@ -1,0 +1,44 @@
+<nav
+  class="sticky top-0 z-50 backdrop-blur bg-white/80 dark:bg-slate-900/80 border-b transition-all"
+>
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a routerLink="/" class="text-2xl font-extrabold" [style.color]="'var(--primary)'">
+      NoteNest
+    </a>
+
+    <!-- Links -->
+    <div class="hidden md:flex gap-6 font-medium">
+      <a routerLink="/" class="hover:text-[var(--primary)] transition"> Home </a>
+      <a routerLink="/create" class="hover:text-[var(--primary)] transition"> Create </a>
+      <a routerLink="/about" class="hover:text-[var(--primary)] transition"> About </a>
+      <a routerLink="/contact" class="hover:text-[var(--primary)] transition"> Contact </a>
+    </div>
+
+    <!-- Theme Switch -->
+    <div class="flex items-center gap-4">
+      <app-notification-bell></app-notification-bell>
+
+      <!-- Theme Switch -->
+      <div class="flex gap-2">
+        <button
+          *ngFor="let t of themes"
+          (click)="changeTheme(t)"
+          class="w-6 h-6 rounded-full border hover:scale-110 transition"
+          [ngStyle]="{
+            background:
+              t === 'indigo'
+                ? '#4f46e5'
+                : t === 'purple'
+                  ? '#9333ea'
+                  : t === 'green'
+                    ? '#16a34a'
+                    : t === 'orange'
+                      ? '#ea580c'
+                      : '#0f172a',
+          }"
+        ></button>
+      </div>
+    </div>
+  </div>
+</nav>
