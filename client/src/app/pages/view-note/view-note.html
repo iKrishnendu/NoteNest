@@ -1,0 +1,70 @@
+<div
+  class="relative min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 py-16"
+>
+  <!-- Decorative -->
+  <div
+    class="absolute top-20 left-10 w-72 h-72 bg-indigo-400 rounded-full blur-3xl opacity-10"
+  ></div>
+
+  <!-- Content Card -->
+  <div class="relative max-w-4xl mx-auto px-6">
+    <div
+      class="bg-white/80 backdrop-blur-xl border border-white/60 rounded-3xl shadow-2xl p-8 md:p-12 animate-fade-in"
+    >
+      <!-- Title -->
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-6">
+        {{ title }}
+      </h1>
+
+      <!-- Meta -->
+      <p class="text-sm text-gray-500 mb-10">
+        Shared via <span class="font-medium">NoteNest</span>
+      </p>
+
+      <!-- Content -->
+      <div
+        class="prose prose-indigo max-w-none mb-12 whitespace-pre-line"
+      >
+        {{ content }}
+      </div>
+
+      <!-- Files -->
+      <div *ngIf="files.length" class="mb-10">
+        <h3 class="text-lg font-semibold mb-4">📎 Attachments</h3>
+
+        <div class="space-y-3">
+          <div
+            *ngFor="let file of files"
+            class="flex items-center justify-between px-4 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition"
+          >
+            <span class="truncate">{{ file.name }}</span>
+            <span class="text-sm text-gray-500">
+              {{ file.size }}
+            </span>
+          </div>
+        </div>
+
+        <button
+          (click)="downloadAll()"
+          class="mt-5 px-6 py-3 rounded-xl bg-[var(--primary)] text-white font-medium shadow hover:scale-105 transition"
+        >
+          ⬇ Download All
+        </button>
+      </div>
+
+      <!-- Danger Zone -->
+      <div class="border-t pt-6 flex justify-between items-center">
+        <p class="text-sm text-gray-500">
+          Not your note?
+        </p>
+
+        <button
+          (click)="requestDelete()"
+          class="text-red-500 text-sm hover:underline"
+        >
+          Request deletion
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
